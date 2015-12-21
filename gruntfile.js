@@ -50,6 +50,21 @@ module.exports = function(grunt) {
                 files: ['src/**'],
                 tasks: ['babel', 'webpack']
             }
+        },
+
+        uglify: {
+            build: {
+                src: 'client/js/main.js',
+                dest: 'client/js/main.min.js'
+            }
+        },
+
+        cssmin: {
+            build: {
+                files: {
+                    'client/css/main.min.css': ['client/css/main.css']
+                }
+            }
         }
 
     });
@@ -60,9 +75,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-cssmin');
 
 // 4. Where we tell Grunt what to do when we type 'grunt' into the terminal.
 
     grunt.registerTask('default', ['less', 'babel', 'webpack']);
+
+    grunt.registerTask('minify', ['cssmin', 'uglify']);
 
 }
