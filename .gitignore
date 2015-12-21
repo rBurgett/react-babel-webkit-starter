@@ -26,13 +26,6 @@ build/Release
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
 
-<<<<<<< HEAD
 .DS_Store
 
-=======
-client/js/main.js
-client/js/main.min.js
-client/css/main.css
-client/css/main.min.css
->>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
 dist/

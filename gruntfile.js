@@ -79,11 +79,7 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/**'],
-<<<<<<< HEAD
                 tasks: ['flow', 'webpack']
-=======
-                tasks: ['flow', 'babel', 'webpack']
->>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
             }
         }
 
@@ -92,20 +88,15 @@ module.exports = function(grunt) {
 // 3. Where we tell Grunt we plan to use this plug-in.
 
     grunt.loadNpmTasks('grunt-contrib-less');
-    // grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
-<<<<<<< HEAD
     grunt.loadNpmTasks('grunt-contrib-copy');
-=======
->>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
     grunt.loadNpmTasks('grunt-flow');
 
 // 4. Where we tell Grunt what to do when we type 'grunt' into the terminal.
 
-<<<<<<< HEAD
     grunt.registerTask('default', ['less', 'webpack', 'copy']);
 
     grunt.registerTask('build', ['less', 'webpack', 'copy']);
@@ -120,9 +111,8 @@ module.exports = function(grunt) {
             fs = require('fs');
 
         var indexPath = path.join('dist', 'index.html');
-=======
+
     grunt.registerTask('default', ['less', 'flow', 'babel', 'webpack']);
->>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
 
         var indexHTML = '';
 
