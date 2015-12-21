@@ -1,7 +1,11 @@
+/* @flow */
+
 import React from 'react';
 
-let hello = (name) => {
+let hello = function(name) {
+
     return `Hello, ${name}!`;
+
 }
 
 class MyComponent extends React.Component {
@@ -14,4 +18,4 @@ class MyComponent extends React.Component {
 
 }
 
-React.render(<MyComponent />, document.getElementById('container'));
+React.render(<MyComponent />, document.getElementById('js-container'));

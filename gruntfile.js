@@ -41,17 +41,6 @@ module.exports = function(grunt) {
             }
         },
 
-        watch: {
-            less: {
-                files: ['less/**'],
-                tasks: ['less']
-            },
-            js: {
-                files: ['src/**'],
-                tasks: ['babel', 'webpack']
-            }
-        },
-
         uglify: {
             build: {
                 src: 'client/js/main.js',
@@ -65,6 +54,24 @@ module.exports = function(grunt) {
                     'client/css/main.min.css': ['client/css/main.css']
                 }
             }
+        },
+
+        flow: {
+            options: {
+                style: 'color'
+            },
+            files: {}
+        },
+
+        watch: {
+            less: {
+                files: ['less/**'],
+                tasks: ['less']
+            },
+            js: {
+                files: ['src/**'],
+                tasks: ['flow', 'babel', 'webpack']
+            }
         }
 
     });
@@ -77,10 +84,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-flow');
 
 // 4. Where we tell Grunt what to do when we type 'grunt' into the terminal.
 
-    grunt.registerTask('default', ['less', 'babel', 'webpack']);
+    grunt.registerTask('default', ['less', 'flow', 'babel', 'webpack']);
 
     grunt.registerTask('minify', ['cssmin', 'uglify']);
 
