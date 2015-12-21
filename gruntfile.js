@@ -7,7 +7,7 @@ module.exports = function(grunt) {
         less: {
             development: {
                 files: {
-                    'client/css/main.css': 'less/*.less'
+                    'dist/css/main.css': 'less/*.less'
                 },
                 plugins: [
                     new (require('less-plugin-autoprefix'))({browsers: ['last 2 versions']}),
@@ -16,42 +16,51 @@ module.exports = function(grunt) {
             }
         },
 
-        babel: {
-            options: {
-                sourceMap: false,
-                presets: ['es2015', 'react']
+        copy: {
+            lib: {
+                files: [
+                    {expand: true, cwd: 'public/', src: ['**'], dest: 'dist/'}
+                ]
             },
-            dist: {
-                files: {
-                    'dist/main.js': 'src/**.jsx'
-                }
+            main: {
+                src: 'src/main.html',
+                dest: 'dist/index.html'
             }
         },
 
         webpack: {
             myConfig: {
-                entry: './dist/main.js',
+                entry: './src/main.jsx',
                 output: {
-                    path: './client/js/',
+                    path: './dist/js/',
                     filename: 'main.js'
                 },
                 stats: {
                     colors: true
+                },
+                module: {
+                    loaders: [
+                        {
+                            test: /\.jsx?$/,
+                            exclude: /(node_modules)/,
+                            loaders: ['babel']
+                        }
+                    ]
                 }
             }
         },
 
         uglify: {
             build: {
-                src: 'client/js/main.js',
-                dest: 'client/js/main.min.js'
+                src: 'dist/js/main.js',
+                dest: 'dist/js/main.min.js'
             }
         },
 
         cssmin: {
             build: {
                 files: {
-                    'client/css/main.min.css': ['client/css/main.css']
+                    'dist/css/main.min.css': ['dist/css/main.css']
                 }
             }
         },
@@ -70,7 +79,11 @@ module.exports = function(grunt) {
             },
             js: {
                 files: ['src/**'],
+<<<<<<< HEAD
+                tasks: ['flow', 'webpack']
+=======
                 tasks: ['flow', 'babel', 'webpack']
+>>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
             }
         }
 
@@ -79,17 +92,84 @@ module.exports = function(grunt) {
 // 3. Where we tell Grunt we plan to use this plug-in.
 
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-babel');
+    // grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-webpack');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+<<<<<<< HEAD
+    grunt.loadNpmTasks('grunt-contrib-copy');
+=======
+>>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
     grunt.loadNpmTasks('grunt-flow');
 
 // 4. Where we tell Grunt what to do when we type 'grunt' into the terminal.
 
+<<<<<<< HEAD
+    grunt.registerTask('default', ['less', 'webpack', 'copy']);
+
+    grunt.registerTask('build', ['less', 'webpack', 'copy']);
+
+    grunt.registerTask('build-production', ['less', 'cssmin', 'webpack', 'uglify', 'copy', 'use-minified']);
+
+// 5. Custom Tasks
+
+    grunt.registerTask('use-minified', 'Update index.html to use minified files.', function() {
+
+        var path = require('path'),
+            fs = require('fs');
+
+        var indexPath = path.join('dist', 'index.html');
+=======
     grunt.registerTask('default', ['less', 'flow', 'babel', 'webpack']);
+>>>>>>> cbc7ec508bd952d55fc92db5d607f09b5decf13e
 
-    grunt.registerTask('minify', ['cssmin', 'uglify']);
+        var indexHTML = '';
 
-}
+        // Read dist/index.html as text
+
+        try {
+            indexHTML = fs.readFileSync(indexPath, 'utf8');
+        } catch(e) {
+            grunt.log.error(e.message);
+            return false;
+        }
+
+        // Find script tag for main.js
+
+        var mainJSPatt = /(<script[^>]+src=[^>]+)(?:main\.js)([^<>]+>)/;
+
+        if(!mainJSPatt.test(indexHTML)) {
+            grunt.log.error('Unable to find script tag for main.js in dist/index.html');
+            return false;
+        }
+
+        // Replace main.js with main.min.js
+
+        indexHTML = indexHTML.replace(mainJSPatt, '$1main.min.js$2');
+
+        // Find link tag for main.css
+
+        var mainCSSPatt = /(<link[^>]+href=[^>]+)(?:main\.css)([^<>]+>)/;
+
+        if(!mainCSSPatt.test(indexHTML)) {
+            grunt.log.error('Unable to find link tag for main.css in dist/index.html');
+            return false;
+        }
+
+        // Replace main.css with main.min.css
+
+        indexHTML = indexHTML.replace(mainCSSPatt, '$1main.min.css$2');
+
+        // Write the new index.html file
+
+        try {
+            fs.writeFileSync(indexPath, indexHTML, {encoding: 'utf8'});
+        } catch(e) {
+            grunt.log.error(e.message);
+            return false;
+        }
+
+    });
+
+};
