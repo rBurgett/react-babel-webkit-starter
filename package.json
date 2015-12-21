@@ -1,10 +1,12 @@
 {
-  "name": "react-babel-webkit-starter",
+  "name": "react-babel-webpack-starter",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "Boilerplate for a React/Babel/Webpack application using Grunt to handle tasks, Flow for type checking, and LESS for styles.",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "grunt build",
+    "build-production": "grunt build-production",
+    "flow": "grunt flow"
   },
   "repository": {
     "type": "git",
