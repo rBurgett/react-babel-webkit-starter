@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rBurgett/react-babel-webkit-starter.git"
+    "url": "git+https://github.com/rBurgett/react-babel-webpack-starter.git"
   },
   "author": "",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/rBurgett/react-babel-webkit-starter/issues"
+    "url": "https://github.com/rBurgett/react-babel-webpack-starter/issues"
   },
-  "homepage": "https://github.com/rBurgett/react-babel-webkit-starter#readme",
+  "homepage": "https://github.com/rBurgett/react-babel-webpack-starter#readme",
   "dependencies": {
     "react": "^0.14.3",
     "react-dom": "^0.14.3"
