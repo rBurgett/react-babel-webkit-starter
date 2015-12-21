@@ -105,9 +105,24 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build', ['less', 'webpack', 'copy']);
 
-    grunt.registerTask('build-production', ['less', 'cssmin', 'webpack', 'uglify', 'copy', 'use-minified']);
+    grunt.registerTask('build-production', ['empty-build-directory', 'less', 'cssmin', 'webpack', 'uglify', 'copy', 'use-minified']);
 
 // 5. Custom Tasks
+
+    grunt.registerTask('empty-build-directory', 'Empties the build directory', function() {
+
+        var fs = require('fs-extra');
+
+        var buildFolderPath = 'dist';
+
+        try {
+            fs.emptyDirSync(buildFolderPath);
+        } catch(e) {
+            grunt.log.error(e.message);
+            return false;
+        }
+
+    });
 
     grunt.registerTask('use-minified', 'Update index.html to use minified files.', function() {
 
@@ -115,8 +130,6 @@ module.exports = function(grunt) {
             fs = require('fs');
 
         var indexPath = path.join('dist', 'index.html');
-
-    grunt.registerTask('default', ['less', 'flow', 'babel', 'webpack']);
 
         var indexHTML = '';
 
