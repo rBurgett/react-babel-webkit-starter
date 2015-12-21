@@ -39,14 +39,18 @@ module.exports = function(grunt) {
                     colors: true
                 }
             }
-        }
+        },
 
-        // watch: {
-        //     scripts: {
-        //         files: ['less/**'],
-        //         tasks: ['less']
-        //     }
-        // }
+        watch: {
+            less: {
+                files: ['less/**'],
+                tasks: ['less']
+            },
+            js: {
+                files: ['src/**'],
+                tasks: ['babel', 'webpack']
+            }
+        }
 
     });
 
@@ -55,6 +59,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-babel');
     grunt.loadNpmTasks('grunt-webpack');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
 // 4. Where we tell Grunt what to do when we type 'grunt' into the terminal.
 

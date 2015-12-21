@@ -1,7 +1,7 @@
 import React from 'react';
 
 let hello = (name) => {
-    return `Hello ${name}!`;
+    return `Hello, ${name}!`;
 }
 
 class MyComponent extends React.Component {
