@@ -1,28 +1,23 @@
 /* @flow */
 
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
+import { Router, Route, IndexRoute } from 'react-router';
+import { createHistory, useBasename } from 'history';
 
-// sample function with Flow type annotations
+import About from './components/about/about.jsx';
+import Home from './components/home/home.jsx';
+import Layout from './components/layout.jsx';
 
-let hello = (name: string): string => {
+const history = useBasename(createHistory)({
+  basename: '/'
+});
 
-    return `Hello, ${name}!`;
-
-};
-
-// sample React class
-
-class MyComponent extends React.Component {
-
-    render() {
-        return (
-            <h1>{hello('Ryan')}</h1>
-        );
-    }
-
-}
-
-// ReactDOM render example
-
-ReactDOM.render(<MyComponent />, document.getElementById('js-container'));
+render((
+    <Router history={history}>
+        <Route path='/' component={Layout}>
+            <IndexRoute name='home' component={Home} />
+            <Route name='about' path='/about' component={About} />
+        </Route>
+    </Router>
+), document.getElementById('js-container'));
