@@ -78,11 +78,11 @@ module.exports = function(grunt) {
                 tasks: ['less']
             },
             js: {
-                files: ['src/**.jsx', 'src/**.js'],
-                tasks: ['flow', 'webpack']
+                files: ['src/**.js'],
+                tasks: ['webpack']
             },
             html: {
-                files: ['src/*.html', 'public/**'],
+                files: ['src/main.html', 'public/**'],
                 tasks: ['copy']
             }
         }
