@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 class Layout extends React.Component {
 
-    render() {
+    render(): React.Element {   // notice the Flow type declaration (e.g. ': React.Element')
 
         const styles = {
             button: {

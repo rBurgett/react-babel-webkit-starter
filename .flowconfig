@@ -1,8 +1,6 @@
 [include]
 
 [ignore]
-.*/node_modules/.*
-.*/client/.*
-.*/dist/.*
 .*/less/.*
 .*/test/.*
+.*/flow/.*
