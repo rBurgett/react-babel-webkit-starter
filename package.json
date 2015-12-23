@@ -4,9 +4,10 @@
   "description": "Boilerplate for a React/Babel/Webpack application using Grunt to handle tasks, Flow for type checking, and LESS for styles.",
   "main": "",
   "scripts": {
-    "start": "node dev-server.js",
     "build": "grunt build",
     "build-production": "grunt build-production",
+    "watch": "grunt watch",
+    "dev-server": "node dev-server.js",
     "flow": "grunt flow"
   },
   "repository": {
