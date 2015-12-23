@@ -78,7 +78,7 @@ module.exports = function(grunt) {
                 tasks: ['less']
             },
             js: {
-                files: ['src/**.js'],
+                files: ['src/**/*.jsx'],
                 tasks: ['webpack']
             },
             html: {
