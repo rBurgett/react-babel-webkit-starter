@@ -7,7 +7,7 @@ Install NPM dependencies:
 > $ npm install
 ```
 
-Build application:
+Build application: *(built application can then be found in the `dist` folder*
 ```
 > $ npm run build
 ```
@@ -19,6 +19,11 @@ Run development server:
 
 ## Other NPM Scripts
 
+Watch files and automatically rebuild application as you save changes:
+```
+> $ npm run watch
+```
+
 Build application for production: *(minifies files)*
 ```
 > $ npm run build-production
@@ -28,7 +33,6 @@ Check code using [Flow](http://flowtype.org/) type checker:
 ```
 > $ npm run flow
 ```
-
 
 ## Write in ES2015 (or ES6)
 While transpiling JSX to JS, Babel will also convert any of the newer features of ES2015 into regular ES5 which can be run in any modern browser. Use scoped variables, arrow functions, string interpolation, modules, and classes today!
@@ -42,3 +46,6 @@ A basic routing setup can be found in `./src/main.jsx`. The configuration is for
 ## Styling in [LESS](http://lesscss.org/)
 [Bootstrap](http://bootstrapdocs.com/v3.3.5/docs/) is included for your base styles. All stylesheets are in LESS. Add your own imports or styles in `./less/main.less`. Comment-out any usused bootstrap imports in `./less/bootstrap/bootstrap.less`. LESS to CSS compiling is handled by Grunt.
 (I have intentionally not included Bootstrap's JavaScript file because it forces a dependency on jQuery)
+
+## Drop public assets into `public` folder
+Everything in the `public` folder is copied directly into the `dist` folder during the build process. Any fonts, images, etc. should be placed here.
