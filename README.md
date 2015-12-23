@@ -7,7 +7,7 @@ Install NPM dependencies:
 > $ npm install
 ```
 
-Build application: *(built application can then be found in the `dist` folder*
+Build application: *(built application can then be found in the `dist` folder)*
 ```
 > $ npm run build
 ```
@@ -35,7 +35,7 @@ Check code using [Flow](http://flowtype.org/) type checker:
 ```
 
 ## Write in ES2015 (or ES6)
-While transpiling JSX to JS, Babel will also convert any of the newer features of ES2015 into regular ES5 which can be run in any modern browser. Use scoped variables, arrow functions, string interpolation, modules, and classes today!
+While transpiling JSX to JS, Babel will also convert any of the newer features of ES2015 into regular ES5 which can be run in any modern browser. Use scoped variables, arrow functions, string interpolation, modules, and classes today! **Note: All files in the `src` folder except for main.html need to be .jsx files as this is what the build process expects to find there.**
 
 ## Build view components using [React](https://facebook.github.io/react/)
 The main starting point for the application is `/src/main.jsx`. Begin writing there. There are three sample React components included.
