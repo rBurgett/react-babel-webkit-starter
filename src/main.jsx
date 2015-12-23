@@ -1,5 +1,7 @@
 /* @flow */
+/*eslint no-unused-vars:0*/
 
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute } from 'react-router';
 
