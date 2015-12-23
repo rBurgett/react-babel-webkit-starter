@@ -1,5 +1,5 @@
 # react-babel-webpack-starter
-This is a starter kit for building a completely front-end app using [React](https://facebook.github.io/react/), Babel and Webpack. Often you want an isomorphic solution, but sometimes you just need a drop-in webapp that does not require any changes to the server. That's what this is for. Build tasks are handled by Grunt using Babel and Webpack for transpiling JSX. Bootsrap is included (but easily removed). Flow type checking is also included, if you want to force static types. If you use eslint (which is highly recommended!), a configuration file is included with all the necessary plugins and configurations for this build setup.
+This is a starter kit for building a completely front-end app using [React](https://facebook.github.io/react/), Babel and Webpack. Often you want an isomorphic solution, but sometimes you just need a drop-in webapp that does not require any changes to the server. That's what this is for. Build tasks are handled by Grunt using Babel for transpiling JSX and Webpack for bundling. Bootstrap is included (but easily removed). Flow type checking is also included, if you want to force static types. If you use eslint (which is highly recommended!), a configuration file is included with all the necessary plugins and configurations for this build setup.
 
 ## Getting Started
 Install NPM dependencies:
